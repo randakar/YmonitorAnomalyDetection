@@ -27,7 +27,7 @@ AnomalyDetectionInRDECCSV <- function(input_csv = 'example.csv', max_anoms = 0.1
 	inputdata$count <- as.numeric(inputdata$count)
 	
 	## Debugging
-	print(inputdata);
+	##print(inputdata);
 	
 	return ( AnomalyDetectionTs(inputdata, max_anoms, direction, alpha, only_last, threshold, e_value, longterm, piecewise_median_period_weeks, plot, y_log, xlabel, ylabel, title, verbose, na.rm) )
 }
