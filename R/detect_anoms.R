@@ -91,7 +91,10 @@ detect_anoms <- function(data, k = 0.49, alpha = 0.05, num_obs_per_period = NULL
             break
 
         ares <- ares/data_sigma
-        R <- max(ares)
+		if(!is.na(data_sigma))
+			R <- max(ares)
+		else
+			R <- 0L
 
         temp_max_idx <- which(ares == R)[1L]
 
