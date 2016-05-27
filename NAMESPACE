@@ -3,3 +3,4 @@
 export(AnomalyDetectionTs)
 export(AnomalyDetectionVec)
 export(AnomalyDetectionInRDECCSV)
+export(AnomalyDetectionRDECwrapper)
