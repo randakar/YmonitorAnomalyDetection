@@ -14,6 +14,10 @@ AnomalyDetectionInRDECCSV <- function(input_csv = 'example.csv', max_anoms = 0.1
 	## Read datafile (downloaded from RDEC)
 	inputdata <- read.table(input_csv, header = TRUE, sep = "," , dec = "." , colClasses = "character", comment.char = "")
 	
+	## Rename columns
+	names(inputdata)[names(inputdata)=="Date"] <- "timestamp"
+	names(inputdata)[names(inputdata)=="Duration"] <- "count"
+	
 	return ( AnomalyDetectionRDECwrapper(inputdata, max_anoms, direction, alpha, only_last, threshold, e_value, longterm, piecewise_median_period_weeks, plot, y_log, xlabel, ylabel, title, verbose, na.rm) )
 }
 
@@ -26,10 +30,6 @@ AnomalyDetectionRDECwrapper <- function(inputdata, max_anoms = 0.10, direction =
                                title = NULL, verbose=FALSE, na.rm = FALSE){
 
 	print(inputdata$class);
-	
-	## Rename columns
-	names(inputdata)[names(inputdata)=="Date"] <- "timestamp"
-	names(inputdata)[names(inputdata)=="Duration"] <- "count"
 
 	## Filter unwanted columns and reorder them
 	inputdata <- subset(inputdata, select=c("timestamp", "count"))
